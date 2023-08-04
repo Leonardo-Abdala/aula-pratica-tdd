@@ -9,11 +9,9 @@ package atividadeengenharia2;
  *
  * @author Leonardo Abdala
  */
-abstract class Money {
+class Money {
 
     protected int amount;
-
-    abstract Money times(int multiplier);
 
     protected String currency;
 
@@ -26,17 +24,21 @@ abstract class Money {
         this.currency = currency;
     }
 
-    static Dollar dollar(int amount) {
-        return new Dollar(amount, "USD");
+    Money times(int multiplier) {
+        return new Money(amount * multiplier, currency);
+    }
+
+    static Money dollar(int amount) {
+        return new Money(amount, "USD");
     }
 
     static Money franc(int amount) {
-        return new Franc(amount, "CHF");
+        return new Money(amount, "CHF");
     }
 
     public boolean equals(Object object) {
         Money money = (Money) object;
-        return amount == money.amount && getClass().equals(money.getClass());
+        return amount == money.amount && currency().equals(money.currency());
     }
 
 }
