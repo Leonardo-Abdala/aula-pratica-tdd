@@ -9,15 +9,11 @@ package atividadeengenharia2;
  *
  * @author Leonardo Abdala
  */
-class Dollar extends Money{
-   private int amount;
+class Money  {
+   protected int amount;
    
-   Dollar(int amount) {
-      this.amount= amount;
-   }
-   
-   Dollar times(int multiplier) {
-      return new Dollar(amount * multiplier);
-   }
-   
-}	
+   public boolean equals(Object object)  {
+      Money money = (Money) object;
+      return amount == money.amount;
+   }   
+}
